@@ -4,6 +4,7 @@ import com.task.remindme.entity.Reminder;
 import com.task.remindme.repository.ReminderRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,9 +12,15 @@ import java.util.List;
 @Service
 @Slf4j
 public class ReminderService {
+    private String serviceName;
 
     @Autowired
     private ReminderRepository reminderRepository;
+
+    @Autowired
+    public ReminderService(@Value("${service.name}") final String serviceName) {
+        this.serviceName = serviceName;
+    }
 
     public Reminder saveReminder(Reminder reminder) {
         log.info("Inside saveReminder () of ReminderService ");
