@@ -4,9 +4,7 @@ package com.task.remindme.controller;
 import com.task.remindme.dto.ReminderRequest;
 import com.task.remindme.dto.ReminderResponse;
 import com.task.remindme.entity.Customer;
-import com.task.remindme.entity.Reminder;
-import com.task.remindme.exception.ReminderNotFoundException;
-import com.task.remindme.repository.CustomerRepository;
+import com.task.remindme.exception.CustomerNotFoundException;
 //import com.task.remindme.service.UserService;
 import com.task.remindme.service.CustomerService;
 import lombok.extern.slf4j.Slf4j;
@@ -55,7 +53,7 @@ public class ReminderController {
     public ResponseEntity<Object> findDepartmentById(@PathVariable("id") int id) throws Exception {
         Customer customer=customerService.findByCustomerId(id);
         if( customer==null){
-            throw new ReminderNotFoundException("Reminder Id "+id+" Is not present");
+            throw new CustomerNotFoundException("Customer Id "+id+" Is not present");
         }
         return ResponseEntity.ok(customer);
     }
