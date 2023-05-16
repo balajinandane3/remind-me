@@ -6,10 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
 @Entity
@@ -18,8 +15,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 public class Reminder {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long reminderId;
+    private int reminderId;
     private String reminderDescription;
     private String reminderFrequency;
     private String reminderType;
