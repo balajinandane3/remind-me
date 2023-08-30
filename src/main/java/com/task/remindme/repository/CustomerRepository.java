@@ -13,6 +13,6 @@ public interface CustomerRepository extends JpaRepository<Customer,Integer> {
     Customer findByCustomerId(int id);
 
 
-    @Query("SELECT new com.task.remindme.dto.ReminderResponse (u.name,r.reminderDescription) from Customer u JOIN u.reminders r")
-    public List<ReminderResponse> getUserNameJoinReminderDecscription();
+    @Query("SELECT new com.task.remindme.dto.ReminderResponse (u.name,r.description) from Customer u JOIN u.reminders r")
+    public List<ReminderResponse> getUserNameJoinDecscription();
 }

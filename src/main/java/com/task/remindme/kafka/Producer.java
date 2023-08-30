@@ -1,5 +1,5 @@
 package com.task.remindme.kafka;
-
+/*
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
@@ -15,3 +15,4 @@ public class Producer {
         this.kafkaTemplate.send(TOPIC,message);
     }
 }
+*/

@@ -21,7 +21,7 @@ public class CustomerService {
 
 
     public Customer saveCustomer(Customer customer) {
-        log.info("Inside saveReminder () of ReminderService ");
+        log.info("Inside saveCustomer () of CustomerService :{}",customer.toString());
         return customerRepository.save(customer);
     }
 
@@ -29,11 +29,11 @@ public class CustomerService {
         return customerRepository.findByCustomerId(id);
     }
 
-    public List<Customer> findAllReminder() {
+    public List<Customer> findAllCustomer() {
         return customerRepository.findAll();
     }
 
     public List<ReminderResponse>getInfo(){
-        return customerRepository.getUserNameJoinReminderDecscription();
+        return customerRepository.getUserNameJoinDecscription();
     }
 }
