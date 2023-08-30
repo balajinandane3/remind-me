@@ -1,6 +1,6 @@
 package com.task.remindme.controller;
 
-
+/*
 import com.task.remindme.entity.Reminder;
 import com.task.remindme.kafka.Producer;
 import lombok.extern.slf4j.Slf4j;
@@ -26,3 +26,4 @@ public class KafkaMessageController {
 
 
 }
+*/

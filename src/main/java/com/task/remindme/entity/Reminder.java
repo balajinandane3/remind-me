@@ -15,10 +15,10 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Reminder {
     @Id
-    private int reminderId;
-    private String reminderDescription;
-    private String reminderFrequency;
-    private String reminderType;
-    private String reminderStatus;
+    private int id;
+    private String description;
+    private String frequency;
+    private String type;
+    private String status;
 
 }

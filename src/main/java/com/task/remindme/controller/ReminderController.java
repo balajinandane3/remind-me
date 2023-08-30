@@ -7,59 +7,65 @@ import com.task.remindme.entity.Customer;
 import com.task.remindme.exception.CustomerNotFoundException;
 //import com.task.remindme.service.UserService;
 import com.task.remindme.service.CustomerService;
+import com.task.remindme.service.ReminderService;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/reminders")
+@RequestMapping("/")
 @Slf4j
 public class ReminderController {
+    Logger logger = LoggerFactory.getLogger(ReminderController.class);
 
     @Autowired
     private CustomerService customerService;
 
-   /* @Autowired
+   @Autowired
     private ReminderService reminderService;
 
-    @PostMapping("/")
-    public Reminder saveDepartment(@RequestBody Reminder reminder){
+    @PostMapping("/reminder/")
+    public Reminder addReminder(@RequestBody Reminder reminder){
         log.info("Inside saveDepartment() of Department Controller"+reminder.toString());
         return reminderService.saveReminder(reminder);
 
     }
-    @GetMapping("/{id}")
-    public  ResponseEntity<Object> findDepartmentById(@PathVariable("id") Long reminderId) throws Exception {
-        Reminder reminder=reminderService.findByReminderId(reminderId);
+    @GetMapping("reminder/{id}")
+    public  ResponseEntity<Object> findReminderById(@PathVariable("id") int reminderId) throws Exception {
+        Optional<Reminder> reminder=reminderService.findByReminderId(reminderId);
         if( reminder==null){
             throw new ReminderNotFoundException("Reminder Id "+reminderId+" Is not present");
         }
         return ResponseEntity.ok(reminder);
     }
-    @GetMapping("/")
+    @GetMapping("/reminder")
     public List<Reminder> findAllDepartment(){
         return reminderService.findAllReminder();
-    }*/
+    }
 
 
-    @PostMapping("/")
-    public Customer placeOrder(@RequestBody ReminderRequest request){
+    @PostMapping("customer")
+    public Customer addCustomer(@RequestBody ReminderRequest request){
+        logger.info("Inside addCustomer()....{}",request.toString());
         return customerService.saveCustomer(request.getCustomer());
     }
-    @GetMapping("/{id}")
-    public ResponseEntity<Object> findDepartmentById(@PathVariable("id") int id) throws Exception {
+    @GetMapping("customer/{id}")
+    public ResponseEntity<Object> findCustomerById(@PathVariable("id") int id) throws Exception {
         Customer customer=customerService.findByCustomerId(id);
         if( customer==null){
             throw new CustomerNotFoundException("Customer Id "+id+" Is not present");
         }
         return ResponseEntity.ok(customer);
     }
-    @GetMapping("/")
-    public List<Customer> findAllDepartment(){
-        return customerService.findAllReminder();
+    @GetMapping("customer/")
+    public List<Customer> findAllCustomer(){
+        return customerService.findAllCustomer();
     }
     @GetMapping("/getInfo")
     public List<ReminderResponse> getJoinInformation(){

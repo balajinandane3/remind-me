@@ -1,5 +1,6 @@
 package com.task.remindme.kafka;
 
+/*
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
@@ -11,3 +12,4 @@ public class Consumer {
         System.out.println(message);
     }
 }
+*/

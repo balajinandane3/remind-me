@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -27,8 +28,8 @@ public class ReminderService {
         return reminderRepository.save(reminder);
     }
 
-    public Reminder  findByReminderId(Long reminderId) {
-        return reminderRepository.findByReminderId(reminderId);
+    public Optional<Reminder> findByReminderId(int reminderId) {
+        return reminderRepository.findById(reminderId);
     }
 
     public List<Reminder> findAllReminder() {
