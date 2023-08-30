@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
-public class ReminderExceptionController {
-    @ExceptionHandler(value = ReminderNotFoundException.class)
-    public ResponseEntity<Object> exception(ReminderNotFoundException exception) {
+public class CustomerExceptionController {
+    @ExceptionHandler(value = CustomerNotFoundException.class)
+    public ResponseEntity<Object> exception(CustomerNotFoundException exception) {
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
     }
 }
