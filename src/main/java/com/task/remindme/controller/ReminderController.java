@@ -21,7 +21,6 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/")
 @Slf4j
 public class ReminderController {
     Logger logger = LoggerFactory.getLogger(ReminderController.class);
@@ -32,13 +31,13 @@ public class ReminderController {
    @Autowired
     private ReminderService reminderService;
 
-    @PostMapping("/reminder/")
+    @PostMapping("/reminder")
     public Reminder addReminder(@RequestBody Reminder reminder){
         log.info("Inside saveReminder() of ReminderController "+reminder.toString());
         return reminderService.saveReminder(reminder);
 
     }
-    @GetMapping("reminder/{id}")
+    @GetMapping("/reminder/{id}")
     public  ResponseEntity<Object> findReminderById(@PathVariable("id") int reminderId) throws Exception {
         Optional<Reminder> reminder=reminderService.findByReminderId(reminderId);
         if( reminder==null){
@@ -52,12 +51,12 @@ public class ReminderController {
     }
 
 
-    @PostMapping("customer")
+    @PostMapping("/customer")
     public Customer addCustomer(@RequestBody ReminderRequest request){
         logger.info("Inside addCustomer()....{}",request.toString());
         return customerService.saveCustomer(request.getCustomer());
     }
-    @GetMapping("customer/{id}")
+    @GetMapping("/customer/{id}")
     public ResponseEntity<Object> findCustomerById(@PathVariable("id") int id) throws Exception {
         Customer customer=customerService.findByCustomerId(id);
         if( customer==null){
@@ -65,7 +64,7 @@ public class ReminderController {
         }
         return ResponseEntity.ok(customer);
     }
-    @GetMapping("customer/")
+    @GetMapping("/customer")
     public List<Customer> findAllCustomer(){
         return customerService.findAllCustomer();
     }
