@@ -34,7 +34,7 @@ public class ReminderController {
 
     @PostMapping("/reminder/")
     public Reminder addReminder(@RequestBody Reminder reminder){
-        log.info("Inside saveDepartment() of Department Controller"+reminder.toString());
+        log.info("Inside saveReminder() of ReminderController "+reminder.toString());
         return reminderService.saveReminder(reminder);
 
     }
@@ -47,7 +47,7 @@ public class ReminderController {
         return ResponseEntity.ok(reminder);
     }
     @GetMapping("/reminder")
-    public List<Reminder> findAllDepartment(){
+    public List<Reminder> findAllReminders(){
         return reminderService.findAllReminder();
     }
 
